@@ -15,7 +15,7 @@ class PenWidthTestSketch(vsketch.SketchClass):
     buffer = vsketch.Param(0.1, decimals=4,unit="in")
 
     def draw(self, vsk: vsketch.Vsketch) -> None:
-        vsk.size(f"{self.height}x{self.width}", landscape=True, center=True)
+        vsk.size(f"{self.height}x{self.width}", landscape=True, center=False)
 
         y = self.radius + self.buffer
         x = self.radius + self.buffer
