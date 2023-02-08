@@ -23,18 +23,17 @@ class PenWidthTestSketch(vsketch.SketchClass):
                  landscape=self.landscape,
                  center=False)
 
-        x_max_radius = self.width / (2 * self.num_steps +
-                                     (self.num_steps + 1) *
-                                     (1 + self.buffer_ratio))
-        y_max_radius = (self.height -
+        x_max_radius = vsk.width / (2 * self.num_steps + (self.num_steps + 1) *
+                                    (1 + self.buffer_ratio))
+        y_max_radius = (vsk.height -
                         (self.label_height if self.label else 0)) / (
                             2 * self.num_layers + (self.num_layers + 1) *
                             (1 + self.buffer_ratio))
 
         radius = min(x_max_radius, y_max_radius)
-        x_buffer = (self.width -
+        x_buffer = (vsk.width -
                     2 * radius * self.num_steps) / (self.num_steps + 1)
-        y_buffer = ((self.height - (self.label_height if self.label else 0)) -
+        y_buffer = ((vsk.height - (self.label_height if self.label else 0)) -
                     self.num_layers * 2 * radius) / (self.num_layers + 1)
         x = radius + x_buffer
 
