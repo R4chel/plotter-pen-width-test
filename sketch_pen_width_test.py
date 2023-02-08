@@ -3,6 +3,10 @@ import numpy as np
 import vpype as vp
 
 
+def pixels_to_inches(px):
+    return round(px / vp.convert_length("in"), 4)
+
+
 class PenWidthTestSketch(vsketch.SketchClass):
     # Sketch parameters:
     debug = vsketch.Param(False)
@@ -34,6 +38,11 @@ class PenWidthTestSketch(vsketch.SketchClass):
                     2 * radius * self.num_steps) / (self.num_steps + 1)
         y_buffer = ((vsk.height - (self.label_height if self.label else 0)) -
                     self.num_layers * 2 * radius) / (self.num_layers + 1)
+
+        if self.debug:
+            print(f"radius:{pixels_to_inches(radius)}in, \
+x_buffer:{(pixels_to_inches(x_buffer))}in, \
+y_buffer:{(pixels_to_inches(y_buffer))}in ")
         x = radius + x_buffer
 
         layers = [i + 1 for i in range(self.num_layers)]
